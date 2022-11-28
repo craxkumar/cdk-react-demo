@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 
+console.log("code",process.env.REACT_APP_API_URL);
+
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">

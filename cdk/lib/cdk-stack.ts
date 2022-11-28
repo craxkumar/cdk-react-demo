@@ -3,7 +3,6 @@ import { Construct } from 'constructs';
 import { aws_s3_deployment as s3Deploy, aws_s3 as s3 } from 'aws-cdk-lib';
 import {aws_cloudfront as cloudfront} from 'aws-cdk-lib';
 
-
 export class CdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -12,8 +11,8 @@ export class CdkStack extends cdk.Stack {
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
     });
-    
-    new s3Deploy.BucketDeployment(this, 'DeployS3Demo', {
+
+    new s3Deploy.BucketDeployment(this, 'deployS3Demo', {
       sources: [s3Deploy.Source.asset('../build')],
       destinationBucket: websiteBucket
     });
@@ -29,9 +28,6 @@ export class CdkStack extends cdk.Stack {
         },
       ],
    });
-
-
-
 
   } 
 
