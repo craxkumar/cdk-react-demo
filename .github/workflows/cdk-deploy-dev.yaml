@@ -44,5 +44,5 @@ jobs:
         working-directory: cdk
 
       - name: CDK Deploy 
-        run : cdk deploy 
+        run : cdk deploy rk-dev-stack
         working-directory: cdk
