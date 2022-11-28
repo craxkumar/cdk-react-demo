@@ -40,9 +40,9 @@ jobs:
         working-directory: cdk  
 
       - name: CDK synth 
-        run : cdk synth  
+        run : cdk synth rk-dev-stack
         working-directory: cdk
 
       - name: CDK Deploy 
-        run : cdk deploy  
+        run : cdk deploy 
         working-directory: cdk

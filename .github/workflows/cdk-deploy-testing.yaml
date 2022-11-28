@@ -1,0 +1,48 @@
+name: CDK-CI/CD
+
+on:
+  push:
+    branches:
+      - test
+  
+  workflow_dispatch: 
+
+env:
+  AWS_REGION: us-east-2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Install npm
+        run : |
+          sudo apt update -y && sudo apt install nodejs npm -y
+          npm install
+
+      - name: Install AWS CDK
+        run : 'sudo npm install -g aws-cdk'
+
+      - name : Build 
+        run : npm run build
+
+      - name: Install Requirements
+        run: npm install
+        working-directory: cdk  
+
+      - name: CDK synth 
+        run : cdk synth rk-testing-stack
+        working-directory: cdk
+
+      - name: CDK Deploy 
+        run : cdk deploy rk-testing-stack 
+        working-directory: cdk

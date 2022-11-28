@@ -3,22 +3,24 @@ import { Construct } from 'constructs';
 import { aws_s3_deployment as s3Deploy, aws_s3 as s3 } from 'aws-cdk-lib';
 import {aws_cloudfront as cloudfront} from 'aws-cdk-lib';
 
-export class CdkStack extends cdk.Stack {
+export class CdkStackTesting extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const websiteBucket = new s3.Bucket(this, 'cdkDemoBucket', {
+    // creating new s3 bucket 
+    const websiteBucket = new s3.Bucket(this, 'cdkDemoBucketTest', {
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
     });
 
-    new s3Deploy.BucketDeployment(this, 'deployS3Demo', {
+    // Deploying files to s3 
+    new s3Deploy.BucketDeployment(this, 'deployS3DemoTest', {
       sources: [s3Deploy.Source.asset('../build')],
       destinationBucket: websiteBucket
     });
 
     // Creates a distribution from an S3 bucket.
-    new cloudfront.CloudFrontWebDistribution(this, 'cdkDemoDist', {
+    new cloudfront.CloudFrontWebDistribution(this, 'cdkDemoDistTest', {
       originConfigs: [
         {
           s3OriginSource: {
