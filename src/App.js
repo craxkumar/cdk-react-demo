@@ -12,6 +12,10 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <p>
+          These are the changes realted to Test ENV,
+          will be pushed to DEV ENV after checked in TEST ENV.
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
