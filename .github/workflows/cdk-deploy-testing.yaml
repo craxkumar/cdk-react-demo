@@ -39,9 +39,9 @@ jobs:
         run: npm install
         working-directory: cdk  
 
-      - name: CDK Destroy
-        run: cdk destroy rk-testing-stack --require-approval never 
-        working-directory: cdk  
+      # - name: CDK Destroy
+      #   run: cdk destroy rk-testing-stack --require-approval never 
+      #   working-directory: cdk  
 
       - name: CDK synth 
         run : cdk synth rk-testing-stack
