@@ -40,7 +40,7 @@ jobs:
         working-directory: cdk  
 
       - name: CDK Destroy
-        run: cdk destory rk-testing-stack --require-approval never 
+        run: cdk destroy rk-testing-stack --require-approval never 
         working-directory: cdk  
 
       - name: CDK synth 
