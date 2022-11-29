@@ -17,6 +17,7 @@ function App() {
           will be pushed to DEV ENV after checked in TEST ENV.
           VERY NEW TESTINGGG!!!
         </p>
+        <p>ONCE MOREEEE!!</p>
         <a
           className="App-link"
           href="https://reactjs.org"
