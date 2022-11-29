@@ -15,6 +15,14 @@ export class CdkStackTesting extends cdk.Stack {
     super(scope, id, props);
 
     // creating new s3 bucket 
+
+    // const websiteBucket = s3.Bucket.fromBucketName(
+    //   this,
+    //   "rk-testing-cdk",
+    //   "rk-testing-stack-cdkdemobuckettest0353bdc7-1nub1vn4bynhb"
+    // );
+
+    
     const websiteBucket = new s3.Bucket(this, 'cdkDemoBucketTest', {
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
